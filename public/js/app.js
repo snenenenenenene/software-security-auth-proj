@@ -1,7 +1,15 @@
-sha1 = require('js-sha1');
+//sha1 = require('js-sha1');
 
-function checkPassword(inputtxt) 
-{ 
+console.log("soep");
+
+function login() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    checkPassword(password);
+    console.log(email + " " + password);
+}
+
+function checkPassword(inputtxt) { 
 var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
 if(inputtxt.match(passw)) 
 { 
@@ -9,12 +17,17 @@ if(inputtxt.match(passw))
     passwordHandler = document.getElementById("passwordHandler").innerText;
     passwordHandler = "Password is OK"*/
     var sha = sha1($("#password").val()).toUpperCase();
+    console.log(sha);
     var prefix = sha.substring(0, 5);
+    console.log(prefix);
     var suffix = sha.substring(5, sha.length);
+    console.log(suffix);
+
 
     $.ajax({
-        url: "https://api.pwnedpasswords.com/range/" + prefix;
+        url: "https://api.pwnedpasswords.com/range/" + prefix
     }).done(function(response) {
+            console.log(response);
             var hashes = response.split('\n');
             var breached = false;
 
@@ -39,11 +52,3 @@ if(inputtxt.match(passw))
     }
 }
 
-function login() {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    checkPassword(password);
-    console.log(email + " " + password);
-
-
-}
