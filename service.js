@@ -1,6 +1,7 @@
 const express = require("express");
 const { join } = require("path");
 const app = express();
+sha1 = require('js-sha1');
 
 app.use(express.static(join(__dirname, "public")));
 
