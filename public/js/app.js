@@ -36,6 +36,7 @@ if(inputtxt.match(passw))
 
         if (!breached) {
             $("#result").html("The password has not been breached.")
+            window.location.href = "/homepage"
         }
     });
 } else
