@@ -1,13 +1,19 @@
 const express = require("express");
 const { join } = require("path");
 const app = express();
-sha1 = require('js-sha1');
+const sha1 = require('js-sha1');
+const fs = require('fs');
+const { readFile } = require('fs').promises
 
 app.use(express.static(join(__dirname, "public")));
 
 
 app.get("/", (_, res) => {
-  res.sendFile(join(__dirname, "index.html"));
+  res.sendFile(join(__dirname, "login.html"));
+});
+
+app.get("/register", (_, res) => {
+  res.sendFile(join(__dirname, "register.html"));
 });
 
 app.get("/homepage", (_, res) => {
