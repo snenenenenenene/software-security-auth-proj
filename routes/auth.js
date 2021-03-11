@@ -48,6 +48,7 @@ router.post('/register', function(req, res, next) {
     var sha = sha1(password).toUpperCase();
     var prefix = sha.substring(0, 5);
     var suffix = sha.substring(5, sha.length);    
+    if(schema.validate(password)){
     
     axios({
         method: 'get',
@@ -68,7 +69,7 @@ router.post('/register', function(req, res, next) {
                 res.redirect('/register');
             }
         }
-        if (!breached && schema.validate(password) == true) {
+        if (!breached) {
             connection.query('INSERT INTO users (name, password, email) VALUES (?, ?, ?)', [email, password, email], function(err, result, fields) {
                 if (err) console.log(error);
                 
@@ -82,10 +83,16 @@ router.post('/register', function(req, res, next) {
         console.log(error);
     }); 
     } else {
-        req.flash('error', "Enter valid credentials!")
+        req.flash('error', "Password must be 8 letters, have 1 uppercase letter, 2 numbers");
         res.redirect('/register');
     }
+} else {
+    req.flash('error', "Enter valid credentials!")
+    res.redirect('/register');
+}
+
 })
+
 
 
 router.get('/logout', function (req, res) {
