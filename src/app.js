@@ -7,14 +7,15 @@ var expressValidator = require('express-validator');
 var flash = require('express-flash');
 var session = require('express-session');
 var bodyParser = require('body-parser');
+const serverless = require('serverless-http');
  
  
 var mysql = require('mysql');
-var connection  = require('./lib/db');
+var connection  = require('../lib/db');
  
  
-var indexRouter = require('./routes/index');
-var authRouter = require('./routes/auth');
+var indexRouter = require('../routes/index');
+var authRouter = require('../routes/auth');
  
 var app = express();
  
@@ -35,6 +36,8 @@ app.use(session({
     saveUninitialized: true,
     cookie: { maxAge: 60000 }
 }))
+
+app.use('/.netlify/functions/api', router);
  
 
 app.use(expressValidator());
@@ -54,5 +57,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000); 
+//app.listen(3000); 
 module.exports = app;
+module.exports.handler = serverless(app); 
