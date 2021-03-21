@@ -22,6 +22,7 @@ router.post('/authentication', function(req, res, next) {
     var email = req.body.email;
     var password = req.body.password;
     var shaPassword = sha1(password);
+
         connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, shaPassword], function(err, result, fields) {
             if(err) throw err
             if (result.length <= 0) {
