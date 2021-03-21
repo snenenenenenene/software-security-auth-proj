@@ -21,7 +21,8 @@ router.post('/authentication', function(req, res, next) {
     var name = req.body.email;   
     var email = req.body.email;
     var password = req.body.password;
-        connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], function(err, result, fields) {
+    var shaPassword = sha1(password);
+        connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, shaPassword], function(err, result, fields) {
             if(err) throw err
             if (result.length <= 0) {
                 req.flash('error', 'Please enter correct email and Password!')
@@ -42,10 +43,11 @@ router.post('/register', function(req, res, next) {
     var name = req.body.email;   
     var email = req.body.email;
     var password = req.body.password;
+    var shaPassword = sha1(password);
 
     if (email != "" && password != ""){
 
-    connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], function(err, result, fields) {
+    connection.query('SELECT * FROM users WHERE email = ?', [email], function(err, result, fields) {
     if(err) throw err
     if (result.length > 0) {
          req.flash('error', 'This email has already been registered!')
@@ -77,7 +79,7 @@ router.post('/register', function(req, res, next) {
                 }
             }
             if (!breached) {
-                connection.query('INSERT INTO users (name, password, email) VALUES (?, ?, ?)', [email, password, email], function(err, result, fields) {
+                connection.query('INSERT INTO users (name, password, email) VALUES (?, ?, ?)', [email, shaPassword, email], function() {
                     if (err) console.log(error);
                     
                     req.session.loggedin = true;
