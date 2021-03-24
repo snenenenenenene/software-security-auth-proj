@@ -1,7 +1,7 @@
 # SoftwareSecurity
 
-sourcecode: https://github.com/snenne/SoftwareSecurity
-url of hosted website: https://softwaresecurity-app.herokuapp.com
+### sourcecode: https://github.com/snenne/SoftwareSecurity
+### url of hosted website: https://softwaresecurity-app.herokuapp.com/
 
 ## SUMMARY
 
