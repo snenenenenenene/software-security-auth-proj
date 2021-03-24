@@ -1,5 +1,8 @@
 # SoftwareSecurity
 
+sourcecode: https://github.com/snenne/SoftwareSecurity
+url of hosted website: https://softwaresecurity-app.herokuapp.com
+
 ## SUMMARY
 
 This is the final project for the course Software Security.
