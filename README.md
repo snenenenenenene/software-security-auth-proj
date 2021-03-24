@@ -19,12 +19,12 @@ We could've used some form of regex validation instead of this package but since
 var schema = new passwordValidator();
 
 schema
-.is().min(8)                                    // Minimum length 8
-.is().max(100)                                  // Maximum length 100
-.has().uppercase()                              // Must have uppercase letters
-.has().lowercase()                              // Must have lowercase letters
-.has().digits(2)                                // Must have at least 2 digits
-.has().not().spaces()                           // Should not have spaces
+.is().min(8)
+.is().max(100)
+.has().uppercase()
+.has().lowercase()
+.has().digits(2)
+.has().not().spaces()
 ```
 
 ### JS-Sha1
@@ -50,6 +50,11 @@ axios({
       //response code
     }
 ```
+### Bcrypt
+
+To encrypt, salt and decrypt the plaintext passwords and passwords stored in the database respectively we opted for the popular yet secure npm package bcrypt.
+From what it seemed it looked like bcrypt is a big player in the hashing/salting scene and since it fit in perfectly with the scope of this project we did not hesitate to tie this package in with the rest of our application.
+
 
 ## ROADMAP
 
