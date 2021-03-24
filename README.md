@@ -11,7 +11,8 @@ After doing so, the user will be greeted by the homepage of the website wich is 
 
 ## TOOLS + WHY
 
-### PasswordValidator {https://stackoverflow.com/questions/34760548/how-to-validate-password-using-express-validator-npm}
+### PasswordValidator 
+{https://stackoverflow.com/questions/34760548/how-to-validate-password-using-express-validator-npm}
 
 We could've used some form of regex validation instead of this package but since this fit our requirements perfectly and because of its modularity we ended up going with this npm package to validate the integrity of new passwords. 
 
