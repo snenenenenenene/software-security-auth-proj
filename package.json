@@ -23,7 +23,7 @@
     "method-override": "^3.0.0",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
-    "mysql2": "^2.2.5",
+    "mysql2": "^3.23.1",
     "netlify-lambda": "^2.0.3",
     "password-validator": "^5.1.1",
     "serverless-http": "^2.7.0",
