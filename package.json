@@ -21,7 +21,7 @@
     "jquery": "^3.6.0",
     "js-sha1": "^0.6.0",
     "method-override": "^3.0.0",
-    "morgan": "~1.9.1",
+    "morgan": "~1.12.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "netlify-lambda": "^2.0.3",
